@@ -1,10 +1,25 @@
-import { useEffect } from 'react';
-import CarCard from 'components/CarCard/CarCard';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import CarsList from 'components/CarsList/CarsList';
 
 const Catalog = () => {
-    const cars = [];
-    useEffect(() => {});
-    return <CarCard cars={cars} />;
+    const [cars, setCars] = useState();
+
+    useEffect(() => {
+        const getCars = async () => {
+            try {
+                const { data } = await axios.get(
+                    'https://64f8af5a824680fd217fef4a.mockapi.io/cars'
+                );
+                setCars(data);
+            } catch (error) {
+                throw error;
+            }
+        };
+        getCars();
+    }, []);
+
+    return <CarsList cars={cars} />;
 };
 
 export default Catalog;

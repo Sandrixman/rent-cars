@@ -8,7 +8,7 @@ import App from 'components/App/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="rent-cars">
             <GlobalStyle />
             <ToastContainer />
 

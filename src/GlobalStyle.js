@@ -46,6 +46,10 @@ const globalStyles = css`
         height: auto;
     }
 
+    button {
+        border: none;
+    }
+
     .hidden {
         overflow: hidden;
     }
