@@ -1,8 +1,8 @@
 {
-    "name": "rent-car",
+    "name": "rent-cars",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://sandrixman.github.io/goit-rent-car/",
+    "homepage": "https://sandrixman.github.io/rent-cars/",
     "author": "Alexandr>",
     "dependencies": {
         "@emotion/react": "^11.10.6",
