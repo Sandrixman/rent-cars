@@ -17,7 +17,11 @@ const RentalCar = ({ currentCar }) => {
         mileage,
     } = currentCar;
 
-    const onSubmit = () => {};
+    function makePhoneCall() {
+        const telUrl = 'tel:+380730000000';
+
+        window.location.href = telUrl;
+    }
 
     return (
         <>
@@ -47,7 +51,7 @@ const RentalCar = ({ currentCar }) => {
             </SC.InfoWrapper>
             <SC.RentalCarButton
                 type="submit"
-                onClick={onSubmit}
+                onClick={makePhoneCall}
                 variant="contained"
             >
                 Rental car

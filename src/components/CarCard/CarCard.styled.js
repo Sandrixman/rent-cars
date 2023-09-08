@@ -41,5 +41,6 @@ export const RentalCarButton = styled(Button)`
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
+    text-transform: capitalize;
     cursor: pointer;
 `;

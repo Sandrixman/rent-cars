@@ -4,7 +4,7 @@ import * as SC from './Navigation.styled';
 
 export const Navigation = () => {
     return (
-        <AppBar position="static" elevation={16}>
+        <AppBar position="fixed" elevation={16}>
             <SC.StyledToolbar>
                 <SC.TypographyStyled variant="h6">
                     <SC.LinkStyled to={'/'}>Home</SC.LinkStyled>
