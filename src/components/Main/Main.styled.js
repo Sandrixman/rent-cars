@@ -37,6 +37,7 @@ export const MainButton = styled(Button)`
     height: 80px;
     font-size: 24px;
     background: #b48200;
+    border-radius: 12px;
 `;
 
 export const Section = styled.section`

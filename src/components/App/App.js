@@ -4,8 +4,8 @@ import { Layout } from 'components/Layout/Layout';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const Catalog = lazy(() => import('pages/Catalog'));
-const Favorites = lazy(() => import('pages/Favorites'));
-const ErrorPage = lazy(() => import('pages/ErrorPage'));
+const Favorites = lazy(() => import('pages/Favorites/Favorites'));
+const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
 
 export default function App() {
     return (

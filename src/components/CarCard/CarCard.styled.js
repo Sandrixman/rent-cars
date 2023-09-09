@@ -1,9 +1,12 @@
 import styled from '@emotion/styled';
 import { Box, Button } from '@mui/material';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
-export const Card = styled.div`
+export const Card = styled.li`
+    position: relative;
     width: 325px;
     column-gap: 8px;
+    list-style-type: none;
 `;
 
 export const Image = styled.img`
@@ -11,6 +14,22 @@ export const Image = styled.img`
     height: 220px;
     object-fit: cover;
     border-radius: 12px;
+`;
+
+export const EmptyHeart = styled(FaRegHeart)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    fill: #96c3ff;
+`;
+
+export const ChosenHeart = styled(FaHeart)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    fill: #3470ff;
 `;
 
 export const MainInfo = styled.div`

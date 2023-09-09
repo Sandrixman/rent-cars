@@ -1,15 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
-import CarsApi from 'utils/CarsApi/CarsApi';
+import { CarsApi } from 'utils/CarsApi/CarsApi';
 import CarCard from 'components/CarCard/CarCard';
 import * as SC from './CarsList.styled';
 
-const CarsList = ({ cars, setCars, page, setPage }) => {
+const CarsList = ({ filteredCars }) => {
+    const [cars, setCars] = useState([]);
+    const [page, setPage] = useState(1);
+
     useEffect(() => {
-        CarsApi(page).then(({ data }) => {
-            setCars(prevState => [...prevState, ...data]);
-        });
-    }, [page, setCars]);
+        const fetchCars = async () => {
+            try {
+                const { data } = await CarsApi.getCars(page);
+                setCars(prevState => [...prevState, ...data]);
+            } catch (error) {
+                console.error('Server error', error);
+            }
+        };
+        fetchCars();
+    }, [page]);
 
     const loadMore = () => {
         setPage(prevState => prevState + 1);
@@ -17,18 +26,18 @@ const CarsList = ({ cars, setCars, page, setPage }) => {
 
     return (
         <>
-            {cars && (
-                <>
-                    <SC.Section>
+            {!filteredCars && (
+                <SC.CarsSection>
+                    <SC.CarsWrapper>
                         {cars.map(car => (
                             <CarCard key={car.id} currentCar={car} />
                         ))}
-                    </SC.Section>
+                    </SC.CarsWrapper>
                     <Button
                         onClick={loadMore}
                         sx={{
                             width: 160,
-                            marginTop: 5,
+                            margin: 5,
                             borderRadius: 4,
                             fontSize: 20,
                             textTransform: 'capitalize',
@@ -36,7 +45,16 @@ const CarsList = ({ cars, setCars, page, setPage }) => {
                     >
                         Load more
                     </Button>
-                </>
+                </SC.CarsSection>
+            )}
+            {filteredCars && (
+                <SC.CarsSection>
+                    <SC.CarsWrapper>
+                        {filteredCars.map(car => (
+                            <CarCard key={car.id} currentCar={car} />
+                        ))}
+                    </SC.CarsWrapper>
+                </SC.CarsSection>
             )}
         </>
     );

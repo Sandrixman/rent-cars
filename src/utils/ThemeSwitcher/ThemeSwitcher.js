@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
     const colorMode = useContext(ColorModeContext);
 
     return (
@@ -23,7 +23,7 @@ export function ThemeSwitcher() {
             </Box>
         </>
     );
-}
+};
 
 const MaterialUISwitch = styled(Switch)(() => {
     const theme = useTheme();
