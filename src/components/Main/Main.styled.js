@@ -27,12 +27,13 @@ export const MainTitle = styled.h1`
     font-size: 40px;
 `;
 
-export const MainText = styled.h1`
+export const MainText = styled.h2`
+    text-align: center;
     font-size: 24px;
 `;
 
 export const MainButton = styled(Button)`
-    margin-top: 400px;
+    margin-top: 200px;
     width: 350px;
     height: 80px;
     font-size: 24px;
