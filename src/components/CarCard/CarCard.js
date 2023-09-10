@@ -15,8 +15,18 @@ const CarCard = ({ currentCar }) => {
 
     const theme = useTheme();
 
-    const { id, img, make, model, year, rentalPrice, rentalCompany, type } =
-        currentCar;
+    const {
+        id,
+        img,
+        make,
+        model,
+        year,
+        rentalPrice,
+        rentalCompany,
+        type,
+        address,
+        accessories,
+    } = currentCar;
 
     const localStorageKey = `isFavorite_${id}`;
 
@@ -60,6 +70,11 @@ const CarCard = ({ currentCar }) => {
         }
     };
 
+    // searching city and country in adress
+    const match = address.match(/[^,]+,\s*([^,]+),\s*(.*)/);
+    const city = match[1];
+    const country = match[2];
+
     return (
         <SC.Card key={id}>
             <SC.Image src={img} alt="Car's foto" />
@@ -84,8 +99,9 @@ const CarCard = ({ currentCar }) => {
                             : '#12141780',
                 }}
             >
+                <span>{city}</span>|<span>{country}</span>|
                 <span>{rentalCompany}</span>|<span>{type}</span>|
-                <span>{id}</span>|<span>Power liftgate</span>
+                <span>{id}</span>|<span>{accessories[0]}</span>
             </SC.AdditionalInfo>
             <SC.RentalCarButton
                 type="button"
@@ -96,7 +112,12 @@ const CarCard = ({ currentCar }) => {
             </SC.RentalCarButton>
             {showModal && (
                 <Modal onToggleModal={onToggleModal}>
-                    <RentalCar close={onToggleModal} currentCar={currentCar} />
+                    <RentalCar
+                        close={onToggleModal}
+                        currentCar={currentCar}
+                        city={city}
+                        country={country}
+                    />
                 </Modal>
             )}
         </SC.Card>

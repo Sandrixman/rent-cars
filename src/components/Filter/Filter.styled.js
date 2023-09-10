@@ -4,8 +4,8 @@ export const FilterConteiner = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 18px;
-    width: 70vw;
     padding-top: 120px;
     margin: auto;
 `;
@@ -33,11 +33,18 @@ export const Separator = styled.div`
 
 export const Input = styled.input`
     background: #f7f7fb;
-    width: 160px;
+    width: 70px;
     height: 40px;
-    padding: 14px 24px;
+    padding: 14px;
     border: none;
     &:focus-visible {
         outline: none;
+    }
+    @media screen and (min-width: 768px) {
+        padding: 14px 24px;
+        nim-width: 100px;
+    }
+    @media screen and (min-width: 1100px) {
+        width: 160px;
     }
 `;
