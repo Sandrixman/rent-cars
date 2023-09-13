@@ -7,12 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import App from 'components/App/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    // <React.StrictMode>
-    <BrowserRouter basename="rent-cars">
-        <GlobalStyle />
-        <ToastContainer />
+    <React.StrictMode>
+        <BrowserRouter basename="rent-cars">
+            <GlobalStyle />
+            <ToastContainer />
 
-        <App />
-    </BrowserRouter>
-    // </React.StrictMode>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
 );
