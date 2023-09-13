@@ -1,17 +1,13 @@
-import { useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { Modal } from 'components/Modal/Modal';
-import { useFavorites } from 'components/Layout/FavoritesContext';
+import { useFavoritesContext } from 'hooks/useFavoritesContext';
 import useToggleModal from 'hooks/useToggleModal';
 import RentalCar from 'components/RentalCar/RentalCar';
 import * as SC from './CarCard.styled';
 
 const CarCard = ({ currentCar }) => {
-    const { favorites, toggleFavorites } = useFavorites();
-
-    const [isFavorite, setIsFavorite] = useState(false);
-
     const { showModal, onToggleModal } = useToggleModal();
+    const { favorites, setFavorites } = useFavoritesContext();
 
     const theme = useTheme();
 
@@ -28,45 +24,19 @@ const CarCard = ({ currentCar }) => {
         accessories,
     } = currentCar;
 
-    const localStorageKey = `isFavorite_${id}`;
-
-    useEffect(() => {
-        const savedIsFavorite = localStorage.getItem(localStorageKey);
-        if (savedIsFavorite) {
-            setIsFavorite(JSON.parse(savedIsFavorite));
-        }
-    }, [localStorageKey]);
+    const isFavorite = favorites.some(favorite => favorite.id === id);
 
     const moveFavorite = () => {
-        if (favorites.length !== 0) {
-            // check if current card is already in favorites
-            if (!favorites.some(obj => obj.id === currentCar.id)) {
-                const newFavorites = [...favorites, currentCar];
-                setIsFavorite(true);
-                toggleFavorites(newFavorites);
-                localStorage.setItem('favorites', JSON.stringify(newFavorites));
-                localStorage.setItem(
-                    localStorageKey,
-                    JSON.stringify(!isFavorite)
-                );
-            } else {
-                const newFavorites = favorites.filter(
-                    obj => obj.id !== currentCar.id
-                );
-                toggleFavorites(newFavorites);
-                setIsFavorite(false);
-                localStorage.setItem('favorites', JSON.stringify(newFavorites));
-                localStorage.setItem(
-                    localStorageKey,
-                    JSON.stringify(!isFavorite)
-                );
-            }
-        } else {
-            const newFavorites = [currentCar];
-            toggleFavorites(newFavorites);
-            setIsFavorite(true);
+        if (isFavorite) {
+            const newFavorites = favorites.filter(
+                favorite => favorite.id !== id
+            );
+            setFavorites(newFavorites);
             localStorage.setItem('favorites', JSON.stringify(newFavorites));
-            localStorage.setItem(localStorageKey, JSON.stringify(!isFavorite));
+        } else {
+            const newFavorites = [...favorites, currentCar];
+            setFavorites(newFavorites);
+            localStorage.setItem('favorites', JSON.stringify(newFavorites));
         }
     };
 

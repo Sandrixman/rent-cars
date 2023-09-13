@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const FavoritesContext = createContext();
 
-export const useFavorites = () => {
+export const useFavoritesContext = () => {
     return useContext(FavoritesContext);
 };
 
@@ -16,15 +16,11 @@ export const FavoritesProvider = ({ children }) => {
         }
     }, []);
 
-    const toggleFavorites = car => {
-        setFavorites(car);
-    };
-
     return (
         <FavoritesContext.Provider
             value={{
                 favorites,
-                toggleFavorites,
+                setFavorites,
             }}
         >
             {children}

@@ -1,9 +1,9 @@
-import { useFavorites } from 'components/Layout/FavoritesContext';
+import { useFavoritesContext } from 'hooks/useFavoritesContext';
 import CarCard from 'components/CarCard/CarCard';
 import * as SC from './Favorites.styled';
 
 const Favorites = () => {
-    const { favorites } = useFavorites();
+    const { favorites } = useFavoritesContext();
 
     return (
         <SC.CarsWrapper>

@@ -1,6 +1,6 @@
 import { Suspense, createContext, useEffect, useMemo, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { FavoritesProvider } from './FavoritesContext';
+import { FavoritesProvider } from '../../hooks/useFavoritesContext';
 import { Outlet } from 'react-router-dom';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Spiner } from 'components/Spiner/Spiner';
