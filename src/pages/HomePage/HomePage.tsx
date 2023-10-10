@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import * as SC from './Main.styled';
+import * as SC from './HomePage.styled';
 
-const Main = () => {
+const HomePage = () => {
     return (
         <>
             <main>
@@ -69,4 +69,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default HomePage;

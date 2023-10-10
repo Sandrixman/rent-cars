@@ -3,7 +3,7 @@ import CarsList from 'components/CarsList/CarsList';
 import Filter from 'components/Filter/Filter';
 
 const Catalog = () => {
-    const [filteredCars, setFilteredCars] = useState(null);
+    const [filteredCars, setFilteredCars] = useState([]);
 
     return (
         <>
