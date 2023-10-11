@@ -5,7 +5,10 @@ const useToggleModal = () => {
 
     const onToggleModal = () => {
         setShowModal(!showModal);
-        document.querySelector('body').classList.toggle('hidden');
+        const bodyElement = document.querySelector('body');
+        if (bodyElement) {
+            bodyElement.classList.toggle('hidden');
+        }
     };
 
     return { showModal, onToggleModal };

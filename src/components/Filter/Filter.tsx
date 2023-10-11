@@ -1,15 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction, FC } from 'react';
 import { CarsApi } from 'utils/CarsApi/CarsApi';
 import SelectDropdown from './SelectDropdown/SelectDropdown';
 import FilterBtn from './FilterBtn/FilterBtn';
+import { Car, ISelectDropdown } from 'components/App/App.types';
 import * as SC from './Filter.styled';
+import { MultiValue, SingleValue } from 'react-select';
 
-const Filter = ({ setFilteredCars }) => {
-    const [allCars, setAllCars] = useState([]);
-    const [filterSelected, setFilterSelected] = useState(null);
+interface IFilterSelected {
+    car: number | string | undefined;
+    price: number | string | undefined;
+    minMileage: string;
+    maxMileage: string;
+}
 
-    const [filteredBrend, setFilteredBrend] = useState();
-    const [filteredPrice, setFilteredPrice] = useState();
+interface IFilterProps {
+    setFilteredCars: Dispatch<SetStateAction<Car[]>>;
+}
+
+const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
+    const [allCars, setAllCars] = useState<Car[]>([]);
+    const [filterSelected, setFilterSelected] =
+        useState<IFilterSelected | null>(null);
+
+    const [filteredBrend, setFilteredBrend] = useState<ISelectDropdown>();
+    const [filteredPrice, setFilteredPrice] = useState<ISelectDropdown>();
     const [minMileage, setMinMileage] = useState('');
     const [maxMileage, setMaxMileage] = useState('');
 
@@ -35,9 +49,10 @@ const Filter = ({ setFilteredCars }) => {
                 );
             }
             if (filterSelected.price) {
+                const price = parseFloat(filterSelected.price.toString());
                 filter = filter.filter(
                     ({ rentalPrice }) =>
-                        parseFloat(rentalPrice.slice(1)) <= filterSelected.price
+                        parseFloat(rentalPrice.slice(1)) <= price
                 );
             }
             if (filterSelected.minMileage) {
@@ -57,28 +72,38 @@ const Filter = ({ setFilteredCars }) => {
         }
     }, [allCars, filterSelected, setFilteredCars]);
 
-    const handleSelectBrend = selected => {
-        setFilteredBrend(selected);
+    const handleSelectBrend = (
+        selected: SingleValue<ISelectDropdown> | MultiValue<ISelectDropdown>
+    ) => {
+        if (typeof selected !== 'undefined') {
+            setFilteredBrend(selected as ISelectDropdown);
+        }
     };
 
-    const handleSelectPrice = selected => {
-        setFilteredPrice(selected);
+    const handleSelectPrice = (
+        selected: SingleValue<ISelectDropdown> | MultiValue<ISelectDropdown>
+    ) => {
+        if (typeof selected !== 'undefined') {
+            setFilteredPrice(selected as ISelectDropdown);
+        }
     };
 
     const onFilter = () => {
         setFilterSelected({
             car: filteredBrend?.value,
             price: filteredPrice?.value,
-            minMileage: parseInt(minMileage),
-            maxMileage: parseInt(maxMileage),
+            minMileage: minMileage,
+            maxMileage: maxMileage,
         });
         setMinMileage('');
         setMaxMileage('');
     };
 
     // Car brend for SelectDropdown
-    const uniqueBrand = [...new Set(allCars.map(car => car.make))];
-    const brendOptions = uniqueBrand.map(brend => ({
+    const uniqueBrand: string[] = allCars
+        .map(car => car.make)
+        .filter((value, index, self) => self.indexOf(value) === index);
+    const brendOptions: ISelectDropdown[] = uniqueBrand.map(brend => ({
         value: brend,
         label: brend,
     }));

@@ -2,20 +2,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { CarsApi } from 'utils/CarsApi/CarsApi';
 import CarCard from 'components/CarCard/CarCard';
+import { Car } from 'components/App/App.types';
 import * as SC from './CarsList.styled';
-
-type Car = {
-    id: number;
-    img: string;
-    make: string;
-    model: string;
-    year: string;
-    rentalPrice: string;
-    rentalCompany: string;
-    type: string;
-    address: string;
-    accessories: string;
-};
 
 const CarsList = ({ filteredCars }: { filteredCars: Car[] }) => {
     const [cars, setCars] = useState<Car[]>([]);

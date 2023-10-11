@@ -1,11 +1,15 @@
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 import { Modal } from 'components/Modal/Modal';
 import { useFavoritesContext } from 'hooks/useFavoritesContext';
 import useToggleModal from 'hooks/useToggleModal';
 import RentalCar from 'components/RentalCar/RentalCar';
+import { Car } from 'components/App/App.types';
 import * as SC from './CarCard.styled';
 
-const CarCard = ({ currentCar }) => {
+interface CarCardProps {
+    currentCar: Car;
+}
+const CarCard = ({ currentCar }: CarCardProps) => {
     const { showModal, onToggleModal } = useToggleModal();
     const { favorites, setFavorites } = useFavoritesContext();
 
@@ -42,8 +46,8 @@ const CarCard = ({ currentCar }) => {
 
     // searching city and country in adress
     const match = address.match(/[^,]+,\s*([^,]+),\s*(.*)/);
-    const city = match[1];
-    const country = match[2];
+    const city = match ? match[1] : undefined;
+    const country = match ? match[2] : undefined;
 
     return (
         <SC.Card key={id}>
@@ -83,7 +87,6 @@ const CarCard = ({ currentCar }) => {
             {showModal && (
                 <Modal onToggleModal={onToggleModal}>
                     <RentalCar
-                        close={onToggleModal}
                         currentCar={currentCar}
                         city={city}
                         country={country}

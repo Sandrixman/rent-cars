@@ -1,17 +1,19 @@
 import { Suspense, createContext, useEffect, useMemo, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { FavoritesProvider } from '../../hooks/useFavoritesContext';
+import { FavoritesProvider } from 'hooks/useFavoritesContext';
 import { Outlet } from 'react-router-dom';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Spiner } from 'components/Spiner/Spiner';
 import { Box } from '@mui/material';
+
+type ThemeType = 'light' | 'dark';
 
 export const ColorModeContext = createContext({
     toggleColorMode: () => {},
 });
 
 export const Layout = () => {
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState<ThemeType>('light');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

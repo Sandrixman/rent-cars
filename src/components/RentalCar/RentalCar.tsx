@@ -1,7 +1,13 @@
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
+import { Car } from 'components/App/App.types';
 import * as SC from './RentalCar.styled';
 
-const RentalCar = ({ currentCar, city, country }) => {
+interface IRentalCarProps {
+    currentCar: Car;
+    city: string | undefined;
+    country: string | undefined;
+}
+const RentalCar = ({ currentCar, city, country }: IRentalCarProps) => {
     const {
         id,
         img,
