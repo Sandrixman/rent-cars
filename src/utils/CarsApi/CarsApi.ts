@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://64f8af5a824680fd217fef4a.mockapi.io/cars';
 
-const getCars = page => {
+const getCars = (page: number) => {
     return axios({
         url: BASE_URL,
         params: {
@@ -12,7 +12,7 @@ const getCars = page => {
     });
 };
 
-const getAllCars = page => {
+const getAllCars = () => {
     return axios({
         url: BASE_URL,
     });

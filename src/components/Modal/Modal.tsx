@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 import * as SC from './Modal.styled';
 
-export const Modal = ({ children, onToggleModal }) => {
+interface IModalProps {
+    children: React.ReactNode;
+    onToggleModal: () => void;
+}
+
+export const Modal = ({ children, onToggleModal }: IModalProps) => {
     const theme = useTheme();
 
     useEffect(() => {
-        const handleKeyDown = e => {
+        const handleKeyDown = (e: KeyboardEvent) => {
             if (e.code === 'Escape') {
                 onToggleModal();
             }
@@ -19,11 +24,17 @@ export const Modal = ({ children, onToggleModal }) => {
         };
     }, [onToggleModal]);
 
-    const onBackdropClick = e => {
+    const onBackdropClick = (e: React.MouseEvent) => {
         if (e.target === e.currentTarget) {
             onToggleModal();
         }
     };
+
+    const modalRoot = document.querySelector('#modal-root');
+
+    if (!modalRoot) {
+        return null;
+    }
 
     return createPortal(
         <SC.ModalBackdrop onClick={onBackdropClick}>
@@ -38,6 +49,6 @@ export const Modal = ({ children, onToggleModal }) => {
                 {children}
             </SC.ModalContent>
         </SC.ModalBackdrop>,
-        document.querySelector('#modal-root')
+        modalRoot
     );
 };

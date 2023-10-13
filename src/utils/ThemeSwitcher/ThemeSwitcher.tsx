@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Box } from '@mui/material';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 import { ColorModeContext } from 'components/Layout/Layout';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -19,6 +19,7 @@ export const ThemeSwitcher = () => {
                             defaultChecked
                         />
                     }
+                    label=""
                 />
             </Box>
         </>
