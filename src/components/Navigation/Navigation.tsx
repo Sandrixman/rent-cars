@@ -7,8 +7,7 @@ export const Navigation = () => {
         <AppBar position="fixed" elevation={16}>
             <SC.StyledToolbar>
                 <SC.TypographyStyled variant="h6">
-                    <SC.LinkStyled to={'/'}>Home</SC.LinkStyled>
-                    <SC.LinkStyled to={'catalog'}>Catalog</SC.LinkStyled>
+                    <SC.LinkStyled to={'/'}>Catalog</SC.LinkStyled>
                     <SC.LinkStyled to={'favorites'}>Favorites</SC.LinkStyled>
                 </SC.TypographyStyled>
                 <ThemeSwitcher />
