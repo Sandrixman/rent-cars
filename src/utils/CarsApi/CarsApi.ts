@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://64f8af5a824680fd217fef4a.mockapi.io/cars';
+const BASE_URL = 'https://nodejs-homework-rest-api-7or0.onrender.com/cars';
 
 const getCars = (page: number) => {
     return axios({
