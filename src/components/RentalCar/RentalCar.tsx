@@ -86,7 +86,7 @@ const RentalCar = ({ currentCar, city, country }: IRentalCarProps) => {
                 </SC.ConditionsWrapper>
             </SC.InfoWrapper>
             <SC.RentalCarButton
-                type="submit"
+                type="button"
                 onClick={makePhoneCall}
                 variant="contained"
             >

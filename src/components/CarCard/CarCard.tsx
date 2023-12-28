@@ -77,13 +77,13 @@ const CarCard = ({ currentCar }: CarCardProps) => {
                 <span>{rentalCompany}</span>|<span>{type}</span>|
                 <span>{id}</span>|<span>{accessories[0]}</span>
             </SC.AdditionalInfo>
-            <SC.RentalCarButton
+            <SC.LearnMoreButton
                 type="button"
                 onClick={onToggleModal}
                 variant="contained"
             >
                 Learn more
-            </SC.RentalCarButton>
+            </SC.LearnMoreButton>
             {showModal && (
                 <Modal onToggleModal={onToggleModal}>
                     <RentalCar

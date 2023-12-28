@@ -1,10 +1,10 @@
 import { useEffect, useState, Dispatch, SetStateAction, FC } from 'react';
-import { CarsApi } from 'utils/CarsApi/CarsApi';
+import useCarsApi from 'hooks/useCarsApi';
 import SelectDropdown from './SelectDropdown/SelectDropdown';
 import FilterBtn from './FilterBtn/FilterBtn';
 import { Car, ISelectDropdown } from 'components/App/App.types';
-import * as SC from './Filter.styled';
 import { MultiValue, SingleValue } from 'react-select';
+import * as SC from './Filter.styled';
 
 interface IFilterSelected {
     car: number | string | undefined;
@@ -18,7 +18,7 @@ interface IFilterProps {
 }
 
 const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
-    const [allCars, setAllCars] = useState<Car[]>([]);
+    const { allCars } = useCarsApi();
     const [filterSelected, setFilterSelected] =
         useState<IFilterSelected | null>(null);
 
@@ -26,18 +26,6 @@ const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
     const [filteredPrice, setFilteredPrice] = useState<ISelectDropdown>();
     const [minMileage, setMinMileage] = useState('');
     const [maxMileage, setMaxMileage] = useState('');
-
-    useEffect(() => {
-        const fetchCars = async () => {
-            try {
-                const { data } = await CarsApi.getAllCars();
-                setAllCars(data);
-            } catch (error) {
-                console.error('Server Error', error);
-            }
-        };
-        fetchCars();
-    }, []);
 
     // Filtering with all selected values
     useEffect(() => {

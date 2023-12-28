@@ -47,8 +47,8 @@ export const ConditionsWrapper = styled.div`
 `;
 
 export const Conditions = styled.div`
-display: flex;
-gap: 10px;
+    display: flex;
+    gap: 10px;
     padding: 14px 20px;
     border-radius: 35px;
     background: #f9f9f9;
@@ -58,8 +58,7 @@ export const RentalCarButton = styled(Button)`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
-    margin-top: 24px;
+    margin: 24px auto 0;
     padding: 12px 50px;
     border-radius: 12px;
     font-size: 14px;

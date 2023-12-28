@@ -1,29 +1,20 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { Button } from '@mui/material';
-import { CarsApi } from 'utils/CarsApi/CarsApi';
+import useCarsApi from 'hooks/useCarsApi';
 import CarCard from 'components/CarCard/CarCard';
 import { Car } from 'components/App/App.types';
 import * as SC from './CarsList.styled';
 
-const CarsList = ({ filteredCars }: { filteredCars: Car[] }) => {
-    const [cars, setCars] = useState<Car[]>([]);
-    const [page, setPage] = useState(1);
+const CarsList = React.memo(({ filteredCars }: { filteredCars: Car[] }) => {
+    const { cars, loading, error, loadMore } = useCarsApi();
 
-    useEffect(() => {
-        const fetchCars = async () => {
-            try {
-                const { data } = await CarsApi.getCars(page);
-                setCars(prevState => [...prevState, ...data]);
-            } catch (error) {
-                console.error('Server error', error);
-            }
-        };
-        fetchCars();
-    }, [page]);
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
-    const loadMore = () => {
-        setPage(prevState => prevState + 1);
-    };
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
 
     return (
         <SC.CarsSection>
@@ -56,6 +47,6 @@ const CarsList = ({ filteredCars }: { filteredCars: Car[] }) => {
             )}
         </SC.CarsSection>
     );
-};
+});
 
 export default CarsList;

@@ -17,7 +17,10 @@ export const ModalContent = styled(Box)`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80vw;
+    max-width: 1000px;
     min-height: 290px;
+    max-height: 75vh;
+    overflow-y: scroll;
     padding: 30px;
     border-radius: 24px;
     @media screen and (min-width: 768px) {

@@ -48,13 +48,14 @@ export const DescWrapper = styled.div`
 export const AdditionalInfo = styled(Box)`
     display: flex;
     flex-wrap: wrap;
+    min-height: 54px;
     margin-top: 8px;
     column-gap: 8px;
     font-size: 14px;
     line-height: 18px;
 `;
 
-export const RentalCarButton = styled(Button)`
+export const LearnMoreButton = styled(Button)`
     display: flex;
     width: 100%;
     height: 44px;
