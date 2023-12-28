@@ -1,5 +1,18 @@
 import styled from '@emotion/styled';
 
+export const LoadingSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+`;
+
 export const CarsSection = styled.section`
     display: flex;
     flex-direction: column;

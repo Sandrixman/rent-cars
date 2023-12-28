@@ -1,4 +1,5 @@
 import React from 'react';
+import PulseLoader from 'react-spinners/PulseLoader';
 import { Button } from '@mui/material';
 import useCarsApi from 'hooks/useCarsApi';
 import CarCard from 'components/CarCard/CarCard';
@@ -9,7 +10,21 @@ const CarsList = React.memo(({ filteredCars }: { filteredCars: Car[] }) => {
     const { cars, loading, error, loadMore } = useCarsApi();
 
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <SC.LoadingSection>
+                <p>
+                    Please wait about 30 seconds for the backend to come out of
+                    sleep mode...
+                </p>
+                <PulseLoader
+                    color="#1976d2"
+                    loading={loading}
+                    size={20}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </SC.LoadingSection>
+        );
     }
 
     if (error) {
