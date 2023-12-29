@@ -8,7 +8,7 @@ interface IModalProps {
     onToggleModal: () => void;
 }
 
-export const Modal = ({ children, onToggleModal }: IModalProps) => {
+export const Modal: React.FC<IModalProps> = ({ children, onToggleModal }) => {
     const theme = useTheme();
 
     useEffect(() => {
@@ -40,8 +40,7 @@ export const Modal = ({ children, onToggleModal }: IModalProps) => {
         <SC.ModalBackdrop onClick={onBackdropClick}>
             <SC.ModalContent
                 sx={{
-                    backgroundColor:
-                        theme.palette.mode === 'dark' ? '#1e1e1e' : '#fff',
+                    backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#fff',
                     color: theme.palette.mode === 'dark' ? '#ccc' : '#000',
                 }}
             >

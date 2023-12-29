@@ -1,5 +1,5 @@
 export interface Car {
-    id: number;
+    _id: number;
     img: string;
     make: string;
     model: string;
@@ -16,7 +16,12 @@ export interface Car {
     fuelConsumption: string,
     engineSize: string,
 }
-
+export interface IFilterSelected {
+    car: number | string | undefined;
+    price: number | string | undefined;
+    minMileage: string;
+    maxMileage: string;
+}
 export interface ISelectDropdown {
     value: number | string | undefined;
     label: number | string | undefined;

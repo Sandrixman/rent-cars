@@ -4,7 +4,6 @@ import 'modern-normalize';
 const globalStyles = css`
     html {
         box-sizing: border-box;
-        width: 100vw;
     }
 
     *,
@@ -15,8 +14,8 @@ const globalStyles = css`
 
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-            Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+            Cantarell, 'Helvetica Neue', sans-serif;
         color: #212121;
         background-color: #fff;
         -webkit-font-smoothing: antialiased;

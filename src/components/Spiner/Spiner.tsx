@@ -1,16 +1,7 @@
-import { Box } from '@mui/material';
-import BeatLoader from 'react-spinners/BeatLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 export const Spiner = () => {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                mt: '20px',
-            }}
-        >
-            <BeatLoader size={8} />
-        </Box>
+        <PulseLoader color="#1976d2" size={20} aria-label="Loading Spinner" data-testid="loader" />
     );
 };

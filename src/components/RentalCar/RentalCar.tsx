@@ -7,9 +7,12 @@ interface IRentalCarProps {
     city: string | undefined;
     country: string | undefined;
 }
-const RentalCar = ({ currentCar, city, country }: IRentalCarProps) => {
+const RentalCar: React.FC<IRentalCarProps> = ({
+    currentCar,
+    city,
+    country,
+}) => {
     const {
-        id,
         img,
         make,
         model,
@@ -54,7 +57,7 @@ const RentalCar = ({ currentCar, city, country }: IRentalCarProps) => {
                 <SC.AdditionalInfo sx={themeColorStyles}>
                     <span>{city}</span>|<span>{country}</span>|
                     <span>Year: {year}</span>|<span>Type: {type}</span>|
-                    <span>Id: {id}</span>|<span>{rentalCompany}</span>|
+                    <span>{rentalCompany}</span>|
                 </SC.AdditionalInfo>
                 <SC.AdditionalInfo sx={themeColorStyles}>
                     <span>Fuel Consumption: {fuelConsumption}</span>|
@@ -90,7 +93,7 @@ const RentalCar = ({ currentCar, city, country }: IRentalCarProps) => {
                 onClick={makePhoneCall}
                 variant="contained"
             >
-                Rental car
+                Rent
             </SC.RentalCarButton>
         </>
     );

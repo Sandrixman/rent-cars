@@ -4,7 +4,7 @@ interface IFilterBtnProps {
     onFilter: () => void;
 }
 
-const FilterBtn = ({ onFilter }: IFilterBtnProps) => {
+const FilterBtn: React.FC<IFilterBtnProps> = ({ onFilter }) => {
     return (
         <SC.FilterBtn type="button" variant="contained" onClick={onFilter}>
             Search

@@ -1,28 +1,18 @@
-import React from 'react';
-import PulseLoader from 'react-spinners/PulseLoader';
 import { Button } from '@mui/material';
 import useCarsApi from 'hooks/useCarsApi';
 import CarCard from 'components/CarCard/CarCard';
 import { Car } from 'components/App/App.types';
+import { Spiner } from 'components/Spiner/Spiner';
 import * as SC from './CarsList.styled';
 
-const CarsList = React.memo(({ filteredCars }: { filteredCars: Car[] }) => {
+const CarsList: React.FC<{ filteredCars: Car[] }> = ({ filteredCars }) => {
     const { cars, loading, error, loadMore } = useCarsApi();
-
+    console.log('CarsList');
     if (loading) {
         return (
             <SC.LoadingSection>
-                <p>
-                    Please wait about 30 seconds for the backend to come out of
-                    sleep mode...
-                </p>
-                <PulseLoader
-                    color="#1976d2"
-                    loading={loading}
-                    size={20}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
+                <p>Please wait about 30 seconds for the backend to come out of sleep mode...</p>
+                <Spiner />
             </SC.LoadingSection>
         );
     }
@@ -37,7 +27,7 @@ const CarsList = React.memo(({ filteredCars }: { filteredCars: Car[] }) => {
                 <>
                     <SC.CarsWrapper>
                         {cars.map(car => (
-                            <CarCard key={car.id} currentCar={car} />
+                            <CarCard key={car._id} currentCar={car} />
                         ))}
                     </SC.CarsWrapper>
                     <Button
@@ -56,12 +46,12 @@ const CarsList = React.memo(({ filteredCars }: { filteredCars: Car[] }) => {
             ) : (
                 <SC.CarsWrapper>
                     {filteredCars.map(car => (
-                        <CarCard key={car.id} currentCar={car} />
+                        <CarCard key={car._id} currentCar={car} />
                     ))}
                 </SC.CarsWrapper>
             )}
         </SC.CarsSection>
     );
-});
+};
 
 export default CarsList;

@@ -59,8 +59,7 @@ export const Layout = () => {
                                 theme.palette.mode === 'dark'
                                     ? 'rgba(0, 0, 0, 0.87)'
                                     : 'transparent',
-                            color:
-                                theme.palette.mode === 'dark' ? '#ccc' : '#000',
+                            color: theme.palette.mode === 'dark' ? '#ccc' : '#000',
                             minHeight: '100vh',
                         }}
                     >

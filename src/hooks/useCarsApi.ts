@@ -45,6 +45,7 @@ const useCarsApi = () => {
 
     useEffect(() => {
         getCars(page);
+        getAllCars();
     }, [page]);
 
     return { cars, allCars, loading, error, getCars, getAllCars, loadMore };

@@ -1,12 +1,5 @@
 import { ISelectDropdown } from 'components/App/App.types';
-import { FC } from 'react';
-import Select, {
-    ActionMeta,
-    GroupBase,
-    MultiValue,
-    SingleValue,
-    StylesConfig,
-} from 'react-select';
+import Select, { ActionMeta, GroupBase, MultiValue, SingleValue, StylesConfig } from 'react-select';
 
 interface ISelectDropdownProps {
     options: ISelectDropdown[];
@@ -16,16 +9,8 @@ interface ISelectDropdownProps {
         actionMeta: ActionMeta<ISelectDropdown>
     ) => void;
 }
-const SelectDropdown: FC<ISelectDropdownProps> = ({
-    options,
-    placeholder,
-    onChange,
-}) => {
-    const stylesForDropdown: StylesConfig<
-        ISelectDropdown,
-        boolean,
-        GroupBase<ISelectDropdown>
-    > = {
+const SelectDropdown: React.FC<ISelectDropdownProps> = ({ options, placeholder, onChange }) => {
+    const stylesForDropdown: StylesConfig<ISelectDropdown, boolean, GroupBase<ISelectDropdown>> = {
         control: styles => ({
             ...styles,
             minWidth: 160,

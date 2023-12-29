@@ -1,27 +1,20 @@
-import { useEffect, useState, Dispatch, SetStateAction, FC } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import useCarsApi from 'hooks/useCarsApi';
 import SelectDropdown from './SelectDropdown/SelectDropdown';
 import FilterBtn from './FilterBtn/FilterBtn';
-import { Car, ISelectDropdown } from 'components/App/App.types';
+import { Car, ISelectDropdown, IFilterSelected } from 'components/App/App.types';
 import { MultiValue, SingleValue } from 'react-select';
 import * as SC from './Filter.styled';
-
-interface IFilterSelected {
-    car: number | string | undefined;
-    price: number | string | undefined;
-    minMileage: string;
-    maxMileage: string;
-}
 
 interface IFilterProps {
     setFilteredCars: Dispatch<SetStateAction<Car[]>>;
 }
 
-const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
+const Filter: React.FC<IFilterProps> = ({ setFilteredCars }) => {
     const { allCars } = useCarsApi();
-    const [filterSelected, setFilterSelected] =
-        useState<IFilterSelected | null>(null);
+    console.log('Filter');
 
+    const [filterSelected, setFilterSelected] = useState<IFilterSelected | null>(null);
     const [filteredBrend, setFilteredBrend] = useState<ISelectDropdown>();
     const [filteredPrice, setFilteredPrice] = useState<ISelectDropdown>();
     const [minMileage, setMinMileage] = useState('');
@@ -32,27 +25,22 @@ const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
         if (filterSelected) {
             let filter = [...allCars];
             if (filterSelected.car) {
-                filter = filter.filter(
-                    ({ make }) => make === filterSelected.car
-                );
+                filter = filter.filter(({ make }) => make === filterSelected.car);
             }
             if (filterSelected.price) {
                 const price = parseFloat(filterSelected.price.toString());
                 filter = filter.filter(
-                    ({ rentalPrice }) =>
-                        parseFloat(rentalPrice.slice(1)) <= price
+                    ({ rentalPrice }) => parseFloat(rentalPrice.slice(1)) <= price
                 );
             }
             if (filterSelected.minMileage) {
                 filter = filter.filter(
-                    ({ mileage }) =>
-                        mileage > parseFloat(filterSelected.minMileage)
+                    ({ mileage }) => mileage > parseFloat(filterSelected.minMileage)
                 );
             }
             if (filterSelected.maxMileage) {
                 filter = filter.filter(
-                    ({ mileage }) =>
-                        mileage < parseFloat(filterSelected.maxMileage)
+                    ({ mileage }) => mileage < parseFloat(filterSelected.maxMileage)
                 );
             }
 
@@ -135,17 +123,13 @@ const Filter: FC<IFilterProps> = ({ setFilteredCars }) => {
                                 id="mileage"
                                 placeholder="From"
                                 value={minMileage}
-                                onChange={event =>
-                                    setMinMileage(event.target.value)
-                                }
+                                onChange={event => setMinMileage(event.target.value)}
                             />
                             <SC.Separator />
                             <SC.Input
                                 placeholder="To"
                                 value={maxMileage}
-                                onChange={event =>
-                                    setMaxMileage(event.target.value)
-                                }
+                                onChange={event => setMaxMileage(event.target.value)}
                             />
                         </SC.InputWrapper>
                     </div>

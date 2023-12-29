@@ -28,7 +28,7 @@ export const useFavoritesContext = () => {
     return context;
 };
 
-export const FavoritesProvider = ({ children }: ChildrenProps) => {
+export const FavoritesProvider: React.FC<ChildrenProps> = ({ children }) => {
     const [favorites, setFavorites] = useState<Car[]>([]);
 
     useEffect(() => {

@@ -8,7 +8,7 @@ const Favorites = () => {
     return (
         <SC.CarsWrapper>
             {favorites.map(car => (
-                <CarCard key={car.id} currentCar={car} />
+                <CarCard key={car._id} currentCar={car} />
             ))}
         </SC.CarsWrapper>
     );
