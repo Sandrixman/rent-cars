@@ -1,7 +1,7 @@
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
-import useCarsApi from 'hooks/useCarsApi';
-import SelectDropdown from './SelectDropdown/SelectDropdown';
-import FilterBtn from './FilterBtn/FilterBtn';
+import { useCarsApi } from 'hooks';
+import { SelectDropdown } from './SelectDropdown/SelectDropdown';
+import { FilterBtn } from './FilterBtn/FilterBtn';
 import { Car, ISelectDropdown, IFilterSelected } from 'components/App/App.types';
 import { MultiValue, SingleValue } from 'react-select';
 import * as SC from './Filter.styled';
@@ -10,9 +10,8 @@ interface IFilterProps {
     setFilteredCars: Dispatch<SetStateAction<Car[]>>;
 }
 
-const Filter: React.FC<IFilterProps> = ({ setFilteredCars }) => {
+export const Filter: React.FC<IFilterProps> = ({ setFilteredCars }) => {
     const { allCars } = useCarsApi();
-    console.log('Filter');
 
     const [filterSelected, setFilterSelected] = useState<IFilterSelected | null>(null);
     const [filteredBrend, setFilteredBrend] = useState<ISelectDropdown>();
@@ -139,5 +138,3 @@ const Filter: React.FC<IFilterProps> = ({ setFilteredCars }) => {
         </>
     );
 };
-
-export default Filter;

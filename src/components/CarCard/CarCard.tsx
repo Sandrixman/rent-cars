@@ -1,8 +1,6 @@
 import { useTheme } from '@mui/material/styles';
-import { Modal } from 'components/Modal/Modal';
-import { useFavoritesContext } from 'hooks/useFavoritesContext';
-import useToggleModal from 'hooks/useToggleModal';
-import RentalCar from 'components/RentalCar/RentalCar';
+import { useToggleModal, useFavoritesContext } from 'hooks';
+import { Modal, RentalCar } from 'components';
 import { Car } from 'components/App/App.types';
 import * as SC from './CarCard.styled';
 
@@ -10,7 +8,7 @@ interface CarCardProps {
     currentCar: Car;
 }
 
-const CarCard: React.FC<CarCardProps> = ({ currentCar }) => {
+export const CarCard: React.FC<CarCardProps> = ({ currentCar }) => {
     const { showModal, onToggleModal } = useToggleModal();
     const { favorites, setFavorites } = useFavoritesContext();
 
@@ -70,5 +68,3 @@ const CarCard: React.FC<CarCardProps> = ({ currentCar }) => {
         </SC.Card>
     );
 };
-
-export default CarCard;

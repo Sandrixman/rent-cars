@@ -1,17 +1,15 @@
 import { useState } from 'react';
 
-const useToggleModal = () => {
+export const useToggleModal = () => {
     const [showModal, setShowModal] = useState(false);
 
     const onToggleModal = () => {
         setShowModal(!showModal);
         const bodyElement = document.querySelector('body');
-        if (bodyElement) {
-            bodyElement.classList.toggle('hidden');
+            if (bodyElement) {
+            bodyElement.classList.toggle('overflow');
         }
     };
 
     return { showModal, onToggleModal };
 };
-
-export default useToggleModal;

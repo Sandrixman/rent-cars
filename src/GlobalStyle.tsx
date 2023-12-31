@@ -22,6 +22,19 @@ const globalStyles = css`
         -moz-osx-font-smoothing: grayscale;
         overflow: auto;
     }
+    body::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #ccc;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #1976d2;
+        border-radius: 20px;
+        border: 2px solid #ccc;
+    }
 
     h1,
     h2,
@@ -49,7 +62,7 @@ const globalStyles = css`
         border: none;
     }
 
-    .hidden {
+    .overflow {
         overflow: hidden;
     }
 `;

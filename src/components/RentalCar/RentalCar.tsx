@@ -7,11 +7,7 @@ interface IRentalCarProps {
     city: string | undefined;
     country: string | undefined;
 }
-const RentalCar: React.FC<IRentalCarProps> = ({
-    currentCar,
-    city,
-    country,
-}) => {
+export const RentalCar: React.FC<IRentalCarProps> = ({ currentCar, city, country }) => {
     const {
         img,
         make,
@@ -55,9 +51,8 @@ const RentalCar: React.FC<IRentalCarProps> = ({
                     <div>{year}</div>
                 </SC.Title>
                 <SC.AdditionalInfo sx={themeColorStyles}>
-                    <span>{city}</span>|<span>{country}</span>|
-                    <span>Year: {year}</span>|<span>Type: {type}</span>|
-                    <span>{rentalCompany}</span>|
+                    <span>{city}</span>|<span>{country}</span>|<span>Year: {year}</span>|
+                    <span>Type: {type}</span>|<span>{rentalCompany}</span>|
                 </SC.AdditionalInfo>
                 <SC.AdditionalInfo sx={themeColorStyles}>
                     <span>Fuel Consumption: {fuelConsumption}</span>|
@@ -88,15 +83,9 @@ const RentalCar: React.FC<IRentalCarProps> = ({
                     </SC.Conditions>
                 </SC.ConditionsWrapper>
             </SC.InfoWrapper>
-            <SC.RentalCarButton
-                type="button"
-                onClick={makePhoneCall}
-                variant="contained"
-            >
+            <SC.RentalCarButton type="button" onClick={makePhoneCall} variant="contained">
                 Rent
             </SC.RentalCarButton>
         </>
     );
 };
-
-export default RentalCar;

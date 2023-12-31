@@ -9,7 +9,11 @@ interface ISelectDropdownProps {
         actionMeta: ActionMeta<ISelectDropdown>
     ) => void;
 }
-const SelectDropdown: React.FC<ISelectDropdownProps> = ({ options, placeholder, onChange }) => {
+export const SelectDropdown: React.FC<ISelectDropdownProps> = ({
+    options,
+    placeholder,
+    onChange,
+}) => {
     const stylesForDropdown: StylesConfig<ISelectDropdown, boolean, GroupBase<ISelectDropdown>> = {
         control: styles => ({
             ...styles,
@@ -20,6 +24,7 @@ const SelectDropdown: React.FC<ISelectDropdownProps> = ({ options, placeholder, 
             marginTop: 8,
             borderRadius: 14,
             border: 'none',
+            cursor: 'pointer',
         }),
     };
 
@@ -33,5 +38,3 @@ const SelectDropdown: React.FC<ISelectDropdownProps> = ({ options, placeholder, 
         />
     );
 };
-
-export default SelectDropdown;

@@ -1,5 +1,5 @@
 import { useFavoritesContext } from 'hooks/useFavoritesContext';
-import CarCard from 'components/CarCard/CarCard';
+import { CarCard } from 'components';
 import * as SC from './Favorites.styled';
 
 const Favorites = () => {

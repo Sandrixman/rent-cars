@@ -4,7 +4,7 @@ import { Car } from 'components/App/App.types';
 
 const BASE_URL = 'https://nodejs-homework-rest-api-7or0.onrender.com/cars';
 
-const useCarsApi = () => {
+export const useCarsApi = () => {
     const [cars, setCars] = useState<Car[]>([]);
     const [allCars, setAllCars] = useState<Car[]>([]);
     const [page, setPage] = useState(1);
@@ -50,5 +50,3 @@ const useCarsApi = () => {
 
     return { cars, allCars, loading, error, getCars, getAllCars, loadMore };
 };
-
-export default useCarsApi;

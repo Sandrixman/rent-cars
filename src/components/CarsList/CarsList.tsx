@@ -1,13 +1,12 @@
 import { Button } from '@mui/material';
-import useCarsApi from 'hooks/useCarsApi';
-import CarCard from 'components/CarCard/CarCard';
+import { useCarsApi } from 'hooks';
+import { CarCard, Spiner } from 'components';
 import { Car } from 'components/App/App.types';
-import { Spiner } from 'components/Spiner/Spiner';
 import * as SC from './CarsList.styled';
 
-const CarsList: React.FC<{ filteredCars: Car[] }> = ({ filteredCars }) => {
+export const CarsList: React.FC<{ filteredCars: Car[] }> = ({ filteredCars }) => {
     const { cars, loading, error, loadMore } = useCarsApi();
-    console.log('CarsList');
+
     if (loading) {
         return (
             <SC.LoadingSection>
@@ -53,5 +52,3 @@ const CarsList: React.FC<{ filteredCars: Car[] }> = ({ filteredCars }) => {
         </SC.CarsSection>
     );
 };
-
-export default CarsList;
